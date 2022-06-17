@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Form buffet</title>
+</head>
+<body>
+    <form th:action="@{/buffet}" method="post" th:object="${buffet}">
+    <div th:if="${#fields.hasGlobalErrors()}">
+    <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore Globale</p> 
+  </div>
+        <div>
+            Nome: <input type="text" th:field="{nome}" />
+            <span th:if="${#fields.hasErrors('nome')}" th:errors="{nome}"> </span>
+        </div>
+        <div>
+            Cognome: <input type="text" th:field="{cognome}" />
+            <span th:if="${#fields.hasErrors('cognome')}" th:errors="{cognome}"> </span>
+        </div>
+        <div>
+            Etá: <input type="text" th:field="{eta}" />
+            <span th:if="${#fields.hasErrors('eta')}" th:errors="{eta}"> </span>
+        </div>
+        <div>
+            <button type="submit" />
+            Conferma
+            </button>
+        </div>
+    </form>
+</body>
+</html>

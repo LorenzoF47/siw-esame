@@ -9,92 +9,117 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class PortaleController {
-	@Autowired UserService userService;
-	@Autowired AdminService adminService;
+//	@Autowired BuffetService buffetService;
+//	@Autowired ChefService chefService;
+//	@Autowired IngredientiService ingredienteService;
+//	@Autowired PiattoService piattoService;
 	
-	@Autowired BuffetService buffetService;
-	@Autowired ChefService chefService;
-	@Autowired IngredientiService ingredienteService;
-	@Autowired PiattoService piattoService;
-	
-	@PostMapping("/user")
+	@PostMapping("/home")
 	public String Home() {
 		return "home.html";
 	}
 	
-	
 	@GetMapping("/user/{id}")
 	public String getUserPage(Model model) {
 	    return "user.html";
-	  }
+	}
 
-//	@PostMapping("/admin")
-//	public String getAdmin() {
-//		return "admin.html";
+	@GetMapping("/buffet")
+	public String getBuffet() {
+		return "buffet.html";
+	}
+	
+	
+//			 /{id}/piatti")
+	@GetMapping("/buffetid")
+	public String getPiattiDiBuffet() {
+		return "buffetid.html";
+	}
+	
+	@GetMapping("/chef")
+	public String getChef () {
+		return "chef.html";
+	}
+	
+	@GetMapping("/piatti")
+	public String getPiatti () {
+		return "piatto.html";
+	}
+	
+//	@GetMapping("/piatto/{nome}/ingredienti")
+//	public String getIngredientiDiPiatto () {
+//		return "piattoid.html";
 //	}
 	
-	@PostMapping("/admin/{id}")
-	public String getAdminPage(Model model) {
-		return "admin.html";
-	}
-
-	@GetMapping("/utente/buffet/{id}")
-	public String getBuffet(@PathVariable("id") Long id, Model model) {
-	    model.addAttribute("buffet", this.buffetService.findById(id));
-		return "buffet.html";
+	@GetMapping("/ingredienti")
+	public String getIngredienti() {
+		return "ingredienti.html";
 	}
 	
-	@GetMapping("/utente/chef/{id}")
-	public String getChef (@PathVariable("id") Long id, Model model) {
-	    model.addAttribute("chef", this.chefService.findById(id));
-		return "chef.html";
-	}
+//	@GetMapping("/ingrediente/{cod}")
+//	public String getIngrediente() {
+//		return "ingredientecod.html";
+//	}
 	
-	@GetMapping("/utente/piatto/{id}")
-	public String getPiatto (@PathVariable("id") Long id, Model model) {
-	    model.addAttribute("piatto", this.piattoService.findById(id));
-		return "piatto.html";
-	}
-	
-	@GetMapping("/utente/ingrediente/{id}")
-	public String getIngrediente(@PathVariable("id") Long id, Model model) {
-	    model.addAttribute("ingrediente", this.ingredienteService.findById(id));
-		return "ingrediente.html";
-	}
-	
-	@PostMapping("/admin/buffet/{id}")
-	public String addBuffet(@PathVariable("id") Long id, Model model) {
-	    model.addAttribute("buffet", this.buffetService.findById(id));
-		return "buffet.html";
-	}
-	
-	@PostMapping("/admin/buffet/{id}")
-	public String removeBuffet(@PathVariable("id") Long id, Model model) {
-	    model.deleteAttribute("buffet", this.buffetService.findById(id));
-		return "buffet.html";
-	}
-	
-	@PostMapping("/admin/chef/{id}")
-	public String addChef (@PathVariable("id") Long id, Model model) {
-	    model.addAttribute("chef", this.chefService.findById(id));
-		return "chef.html";
-	}
-	
-	@PostMapping("/admin/chef/{id}")
-	public String removeChef (@PathVariable("id") Long id, Model model) {
-	    model.deleteAttribute("chef", this.chefService.findById(id));
-		return "chef.html";
-	}
-	
-	@PostMapping("/admin/piatto/{id}")
-	public String addPiatto(@PathVariable("id") Long id, Model model) {
-	    model.addAttribute("piatto", this.piattoService.findById(id));
-		return "piatto.html";
-	}
-	
-	@PostMapping("/admin/piatto/{id}")
-	public String removePiatto (@PathVariable("id") Long id, Model model) {
-	    model.deleteAttribute("piatto", this.piattoService.findById(id));
-		return "piatto.html";
-	}
+//	@PostMapping("/admin/{id}")
+//	public String getAdminPage(Model model) {
+//		return "admin.html";
+//	}
+//	
+//	@PostMapping("/admin/buffet")
+//	public String addBuffet(@PathVariable("id") Long id, Model model) {
+//	    model.addAttribute("buffet", this.buffetService.findById(id));
+//		return "buffet.html";
+//	}
+//	
+//	@GetMapping("/admin/deleteBuffet/{id}")
+//	public String toDeleteBuffet(@PathVariable("id") Long id, Model model) {
+//	    model.addAttribute("buffet", this.buffetService.findById(id));
+//		return "toDeleteBuffet.html";
+//	}
+//	
+//	@GetMapping("/admin/deleteBuffet/{id}")
+//	public String toDeleteBuffet(@PathVariable("id") Long id, Model model) {
+//		buffetService.deleteById(id);
+//		model.addAttribute("buffet", buffetService.findAll());
+//		return "buffet.html";
+//	}
+//	
+//	@PostMapping("/admin/chef")
+//	public String addChef (@PathVariable("id") Long id, Model model) {
+//	    model.addAttribute("chef", this.chefService.findById(id));
+//		return "chef.html";
+//	}
+//	
+//	@GetMapping("/admin/deleteChef/{id}")
+//	public String toDeleteChef(@PathVariable("id") Long id, Model model) {
+//	    model.addAttribute("chef", this.chefService.findById(id));
+//		return "toDeleteChef.html";
+//	}
+//	
+//	@GetMapping("/admin/deleteChef/{id}")
+//	public String toDeleteBuffet(@PathVariable("id") Long id, Model model) {
+//		chefService.deleteById(id);
+//		model.addAttribute("chef", chefService.findAll());
+//		return "chef.html";
+//	}
+//	
+//	@PostMapping("/admin/piatto")
+//	public String addPiatto(@PathVariable("id") Long id, Model model) {
+//	    model.addAttribute("piatto", this.piattoService.findById(id));
+//		return "piatto.html";
+//	}
+//	
+//	@GetMapping("/admin/deletePiatto/{id}")
+//	public String toDeletePiatto(@PathVariable("id") Long id, Model model) {
+//	    model.addAttribute("piatto", this.piattoService.findById(id));
+//		return "toDeletePiatto.html";
+//	}
+//	
+//	@GetMapping("/admin/deletePiatto/{id}")
+//	public String toDeletePiatto(@PathVariable("id") Long id, Model model) {
+//		piattoService.deleteById(id);
+//		model.addAttribute("piatto", piattoService.findAll());
+//		return "piatto.html";
+//	}
 }
